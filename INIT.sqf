@@ -21,32 +21,37 @@ diag_log format ["------------------ DUWS Unofficial START ----v1.22 based on Mo
 //
 //  3) Define these variables:
 
-		if (isNil "weather_type") then {weather_type = "tropical";};     // choose between "tropical" - "arid" - "temperate" - "temperate_cold" - "mediterranean"
-        if (isNil "opfor_ai_skill") then {opfor_ai_skill = [0.35,0.45];};    // set the skill range of ennemy AI
-        if (isNil "blufor_ai_skill") then {blufor_ai_skill = [0.9,1.0];};    // set the skill range of friendly AI, from 0 to 1 (0 being completely dumb)
-        hq_manually_placed = false;  // you must specify if you have manually placed HQ or not. false = HQ is randomly placed -- true = you have manually placed the HQ
-        zones_manually_placed = false;  // you must specify if you have manually placed the zones or not. false = zones are randomly generated -- true = you have manually placed the zones
-		zones_max_dist_from_hq = 7500;
-		dynamic_weather_enable = true;
-        manually_chosen = false;
-		Attack = false;
-		PlayerMrkrs = true;
-		zoneFound = false;
+
+[] execVM "battleborn\init.sqf";
 
 
-		if (isNil "enable_fast_travel") then
-	{
+if (isNil "weather_type") then {weather_type = "tropical";};     // choose between "tropical" - "arid" - "temperate" - "temperate_cold" - "mediterranean"
+if (isNil "opfor_ai_skill") then {opfor_ai_skill = [0.35,0.45];};    // set the skill range of ennemy AI
+if (isNil "blufor_ai_skill") then {blufor_ai_skill = [0.9,1.0];};    // set the skill range of friendly AI, from 0 to 1 (0 being completely dumb)
+hq_manually_placed = false;  // you must specify if you have manually placed HQ or not. false = HQ is randomly placed -- true = you have manually placed the HQ
+zones_manually_placed = false;  // you must specify if you have manually placed the zones or not. false = zones are randomly generated -- true = you have manually placed the zones
+zones_max_dist_from_hq = 7500;
+dynamic_weather_enable = true;
+manually_chosen = false;
+Attack = false;
+PlayerMrkrs = true;
+zoneFound = false;
+
+
+if (isNil "enable_fast_travel") then {
 	enable_fast_travel = true; // allow fast travel or not
-	};
-	if (isNil "enableChopperFastTravel") then {
+};
+if (isNil "enableChopperFastTravel") then {
 	enableChopperFastTravel = true;  // chopper taxi (support) will fast travel (teleport) or not
-	};
-	if (isNil "commandpointsblu1") then
-	{
-		commandpointsblu1 = 20;            // Starting CP
-	};
-        if (isNil "blufor_ap") then {blufor_ap = 0;};              // STARTING ARMY POWER
-        opfor_ap = 0;
+};
+if (isNil "commandpointsblu1") then {
+	commandpointsblu1 = 20;            // Starting CP
+};
+
+if (isNil "blufor_ap") then {
+	blufor_ap = 0;
+};              // STARTING ARMY POWER
+opfor_ap = 0;
 ///////////////////////////////////////////////////////
 // initialise variables
 //////////////////////////////////////////////////////
@@ -464,7 +469,7 @@ if (isMultiplayer) then {
 
 		// WAIT UNTIL ALL ZONES ARE CAPTURED
 		waitUntil {sleep 1; amount_zones_created > 0};
-		waitUntil {sleep 3; (zoneundercontrolblu >= amount_zones_created);}; // Toutes les zones sont capturées
+		waitUntil {sleep 3; (zoneundercontrolblu >= amount_zones_created);}; // Toutes les zones sont captur?es
 		persistent_stat_script_win = [] execVM "persistent\persistent_stats_win.sqf";
 		["TaskSucceeded",["","Island captured!"]] call bis_fnc_showNotification;
 		capture_island_obj setTaskState "Succeeded";
