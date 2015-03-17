@@ -22,9 +22,6 @@ diag_log format ["------------------ DUWS Unofficial START ----v1.22 based on Mo
 //  3) Define these variables:
 
 
-[] execVM "battleborn\init.sqf";
-
-
 if (isNil "weather_type") then {weather_type = "tropical";};     // choose between "tropical" - "arid" - "temperate" - "temperate_cold" - "mediterranean"
 if (isNil "opfor_ai_skill") then {opfor_ai_skill = [0.35,0.45];};    // set the skill range of ennemy AI
 if (isNil "blufor_ai_skill") then {blufor_ai_skill = [0.9,1.0];};    // set the skill range of friendly AI, from 0 to 1 (0 being completely dumb)
