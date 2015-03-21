@@ -37,9 +37,7 @@ call {
 	if (_location == "leg_r")	exitWith {	_damage = [_damage] call battle_fnc_hitLegs;};
 	if (_location == "leg_l")	exitWith {	_damage = [_damage] call battle_fnc_hitLegs;};
 
-	exitWith {
-		_damage = [_damage] call battle_fnc_hitBase;
-	};
+	_damage = [_damage] call battle_fnc_hitBase;
 };
 
 _chance = Ceil random 100;

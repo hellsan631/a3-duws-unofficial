@@ -1,10 +1,10 @@
 folderLocation = "";
 
 missionLocation = [ ( str missionConfigFile ), 0, -15 ] call BIS_fnc_trimString;
-scriptLocation = missionLocation + folderLocation + "battleborn\";
+scriptLocation = folderLocation + "battleborn\";
 uiLocation = missionLocation + folderLocation + "battleborn\UI";
 soundLocation = missionLocation + folderLocation + "battleborn\sounds\";
-functionLocation = missionLocation + folderLocation + "battleborn\functions\";
+functionLocation = folderLocation + "battleborn\functions\";
 dataLocation = missionLocation + folderLocation + "battleborn\data\";
 
 [] execVM scriptLocation + "defaultSettings.sqf";
